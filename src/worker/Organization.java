@@ -6,7 +6,7 @@ public class Organization {
 
     public Organization(Integer employeesCount, OrganizationType type) {
         set
-                fff
+                fffиваи
     }
 
     public Integer getEmployeesCount() {
