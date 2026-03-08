@@ -20,7 +20,10 @@ public class CommandManager {
         System.out.println("Программа готова к работе. Введите 'help' для справки.");
         while (true) {
             System.out.println("> ");
-            if (!scanner.hasNextLine()) break;
+            if (!scanner.hasNextLine()) {
+                break;
+            }
+
 
             String input = scanner.nextLine();
         }
