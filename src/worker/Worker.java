@@ -1,6 +1,6 @@
 package worker;
 import java.util.Date;
-
+// njhvhosvhosivhosvish
 public class Worker implements Comparable<Worker> {
     private static long nextId = 1; // Статическое поле для генерации уникальных ID
 
