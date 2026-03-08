@@ -21,6 +21,8 @@ public class CommandManager {
         while (true) {
             System.out.println("> ");
             if (!scanner.hasNextLine()) break;
+
+            String input = scanner.nextLine();
         }
     }
 }
