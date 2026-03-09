@@ -14,5 +14,37 @@
       "employeesCount": null,
       "type": "COMMERCIAL"
     }
+  },
+  {
+    "id": 1,
+    "name": "Alex",
+    "coordinates": {
+      "x": 3,
+      "y": 4.0
+    },
+    "creationDate": "1773067921852",
+    "salary": 1000,
+    "position": "CLEANER",
+    "status": "REGULAR",
+    "organization": {
+      "employeesCount": null,
+      "type": "GOVERNMENT"
+    }
+  },
+  {
+    "id": 1,
+    "name": "Will",
+    "coordinates": {
+      "x": 6,
+      "y": 6.0
+    },
+    "creationDate": "1773068900460",
+    "salary": 345,
+    "position": "CLEANER",
+    "status": "REGULAR",
+    "organization": {
+      "employeesCount": null,
+      "type": "GOVERNMENT"
+    }
   }
 ]
