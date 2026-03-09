@@ -38,7 +38,7 @@ public class Worker implements Comparable<Worker> {
 
     public void setId(long id) {
         if (id <= 0) {
-            throw new IllegalArgumentException("ID должен быть больше 0");
+            throw new exceptions.InvalidDataException("ID должен быть больше 0");
         }
         this.id = id;
     }
@@ -49,7 +49,7 @@ public class Worker implements Comparable<Worker> {
 
     public void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Имя не может быть пустым или null (Поле не может быть null, Строка не может быть пустой)");
+            throw new exceptions.InvalidDataException("Имя не может быть пустым или null");
         }
         this.name = name;
     }
@@ -60,7 +60,7 @@ public class Worker implements Comparable<Worker> {
 
     public void setCoordinates(Coordinates coordinates) {
         if (coordinates == null) {
-            throw new IllegalArgumentException("coordinates не могут null");
+            throw new exceptions.InvalidDataException("Coordinates не могут быть null");
         }
         this.coordinates = coordinates;
     }
@@ -71,18 +71,14 @@ public class Worker implements Comparable<Worker> {
 
     public void setCreationDate(Date creationDate) {
         if (creationDate == null) {
-            throw new IllegalArgumentException("creationDate не может быть null");
+            throw new exceptions.InvalidDataException("creationDate не может быть null");
         }
         this.creationDate = creationDate;
     }
 
     public void setSalary(Integer salary) {
-        if (salary == null) {
-            this.salary = null;
-            return;
-        }
-        if (salary <= 0) {
-            throw new IllegalArgumentException("salary МОЖЕТ быть null, НО salary  должно быть больше 0!!!");
+        if (salary != null && salary <= 0) {
+            throw new exceptions.InvalidDataException("Salary должно быть больше 0");
         }
         this.salary = salary;
     }
@@ -92,17 +88,16 @@ public class Worker implements Comparable<Worker> {
     }
 
     public void setStatus(Status status) {
-        if (status == null) {
-            this.status = null;
-        }
         this.status = status;
     }
+
     public Status getStatus() {
         return status;
     }
+
     public void setPosition(Position position) {
         if (position == null) {
-            throw new IllegalArgumentException("position не может быть null");
+            throw new exceptions.InvalidDataException("Position не может быть null");
         }
         this.position = position;
     }
@@ -113,14 +108,14 @@ public class Worker implements Comparable<Worker> {
 
     public void setOrganization(Organization organization) {
         if (organization == null) {
-            throw new IllegalArgumentException("organization не может быть null");
+            throw new exceptions.InvalidDataException("Organization не может быть null");
         }
         this.organization = organization;
     }
+
     public Organization getOrganization() {
         return organization;
     }
-
 
     @Override
     public int compareTo(Worker other) {

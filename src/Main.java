@@ -1,28 +1,30 @@
-import worker.Worker;
-
+import managers.*;
+import io.*;
 import java.util.Scanner;
 
+/**
+ * Точка входа в программу.
+ */
 public class Main {
     public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("write int: ");
-//        if (sc.hasNextInt()) {
-//            int num = sc.nextInt();
-//            System.out.println("wow " + num);
-//        } else {
-//            System.out.println("it was not int.");
-//        }
-
         if (args.length == 0) {
-            System.out.println("Ошибка: введите имя файла с данными в качестве аргумента командной строки.");
+            System.err.println("Ошибка: имя файла должно передаваться как аргумент командной строки.");
             System.exit(1);
         }
+
         String fileName = args[0];
+        FileManager fileManager = new FileManager(fileName);
+        WorkerManager workerManager = new WorkerManager(fileManager);
+        
+        // Автоматическое заполнение из файла
+        workerManager.getCollection().addAll(fileManager.readCollection());
 
-        System.out.println("33");
-
-
-
-
+        ConsoleInputManager consoleInputManager = new ConsoleInputManager(new Scanner(System.in));
+        WorkerReader workerReader = new WorkerReader(consoleInputManager);
+        ScriptReader scriptReader = new ScriptReader();
+        
+        CommandManager commandManager = new CommandManager(workerManager, consoleInputManager, workerReader, scriptReader);
+        
+        commandManager.interactiveMode();
     }
 }

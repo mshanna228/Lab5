@@ -12,14 +12,14 @@ public class Organization {
 
     public void setType(OrganizationType type) {
         if (type == null) {
-            throw new IllegalArgumentException("Тип организации не может быть null");
+            throw new exceptions.InvalidDataException("Тип организации не может быть null");
         }
         this.type = type;
     }
 
     public void setEmployeesCount(Integer employeesCount) {
-        if (employeesCount <= 0) {
-            throw new IllegalArgumentException("Количество сотрудников должно быть больше 0");
+        if (employeesCount != null && employeesCount <= 0) {
+            throw new exceptions.InvalidDataException("Количество сотрудников должно быть больше 0");
         }
         this.employeesCount = employeesCount;
     }

@@ -18,16 +18,16 @@ public class Coordinates {
     }
 
     public void setX(Integer x) {
-        if (x == null) throw new IllegalArgumentException("X не может быть null");
+        if (x == null) throw new exceptions.InvalidDataException("X не может быть null");
 
-        if (x > 709) throw new IllegalArgumentException("X не может быть больше 709");
+        if (x > 709) throw new exceptions.InvalidDataException("X не может быть больше 709");
         this.x = x;
     }
 
     public void setY(Double y) {
-        if (y == null) throw new IllegalArgumentException("Y не может быть null");
+        if (y == null) throw new exceptions.InvalidDataException("Y не может быть null");
 
-        if (y <= -414) throw new IllegalArgumentException("Y должен быть строго больше -414");
+        if (y <= -414) throw new exceptions.InvalidDataException("Y должен быть строго больше -414");
         this.y = y;
     }
 }
