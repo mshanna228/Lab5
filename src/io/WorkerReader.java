@@ -18,7 +18,8 @@ public class WorkerReader {
         Coordinates coordinates = readCoordinates();
         Integer salary = readInt("Введите зарплату:", true);
         Position position = readEnum("Введите должность (LABORER, LEAD_DEVELOPER, CLEANER):", Position.class, false);
-        Status status = readEnum("Введите статус (FIRED, HIRED, RECOMMENDED_FOR_PROMOTION, REGULAR, PROBATION):", Status.class, true);
+        Status status = readEnum("Введите статус (FIRED, HIRED, RECOMMENDED_FOR_PROMOTION, REGULAR, PROBATION):",
+                Status.class, true);
         Organization organization = readOrganization();
 
         return new Worker(name, coordinates, salary, position, status, organization);
@@ -39,12 +40,11 @@ public class WorkerReader {
     }
 
     public Organization readOrganization() {
-        Integer count = readInt("Введите количество сотрудников в организации:", true);
-        while (count != null && count <= 0) {
-            System.out.println("Ошибка: количество сотрудников должно быть больше 0.");
-            count = readInt("Введите количество сотрудников в организации:", true);
-        }
-        OrganizationType type = readEnum("Введите тип организации (COMMERCIAL, GOVERNMENT, TRUST, PRIVATE_LIMITED_COMPANY, OPEN_JOINT_STOCK_COMPANY):", OrganizationType.class, false);
+        Integer count = null; // Пользователь просил не запрашивать это поле, так как оно путается с размером
+                              // коллекции. По заданию оно может быть null.
+        OrganizationType type = readEnum(
+                "Введите тип организации (COMMERCIAL, GOVERNMENT, TRUST, PRIVATE_LIMITED_COMPANY, OPEN_JOINT_STOCK_COMPANY):",
+                OrganizationType.class, false);
         return new Organization(count, type);
     }
 
@@ -52,7 +52,8 @@ public class WorkerReader {
         while (true) {
             String s = inputManager.readLine(message);
             if (s == null || s.isEmpty()) {
-                if (canBeNull) return null;
+                if (canBeNull)
+                    return null;
                 System.out.println("Ошибка: поле не может быть пустым.");
                 continue;
             }
@@ -64,7 +65,8 @@ public class WorkerReader {
         while (true) {
             String s = inputManager.readLine(message);
             if (s == null || s.isEmpty()) {
-                if (canBeNull) return null;
+                if (canBeNull)
+                    return null;
                 System.out.println("Ошибка: поле не может быть пустым.");
                 continue;
             }
@@ -80,7 +82,8 @@ public class WorkerReader {
         while (true) {
             String s = inputManager.readLine(message);
             if (s == null || s.isEmpty()) {
-                if (canBeNull) return null;
+                if (canBeNull)
+                    return null;
                 System.out.println("Ошибка: поле не может быть пустым.");
                 continue;
             }
@@ -96,14 +99,16 @@ public class WorkerReader {
         while (true) {
             String s = inputManager.readLine(message);
             if (s == null || s.isEmpty()) {
-                if (canBeNull) return null;
+                if (canBeNull)
+                    return null;
                 System.out.println("Ошибка: поле не может быть пустым.");
                 continue;
             }
             try {
                 return Enum.valueOf(enumClass, s.toUpperCase());
             } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: введите значение из списка: " + Arrays.toString(enumClass.getEnumConstants()));
+                System.out.println(
+                        "Ошибка: введите значение из списка: " + Arrays.toString(enumClass.getEnumConstants()));
             }
         }
     }

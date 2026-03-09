@@ -1,50 +1,18 @@
 [
   {
     "id": 1,
-    "name": "Vecna",
-    "coordinates": {
-      "x": 69,
-      "y": 13.0
-    },
-    "creationDate": "1773052759265",
-    "salary": 6,
-    "position": "CLEANER",
-    "status": "REGULAR",
-    "organization": {
-      "employeesCount": 3,
-      "type": "GOVERNMENT"
-    }
-  },
-  {
-    "id": 2,
-    "name": "Tom",
+    "name": "vecna",
     "coordinates": {
       "x": 1,
       "y": 1.0
     },
-    "creationDate": "1773053652952",
-    "salary": 666,
+    "creationDate": "1773054202648",
+    "salary": 2,
     "position": "LABORER",
     "status": "HIRED",
     "organization": {
-      "employeesCount": 3,
+      "employeesCount": null,
       "type": "COMMERCIAL"
-    }
-  },
-  {
-    "id": 3,
-    "name": "Harry Potter",
-    "coordinates": {
-      "x": 2,
-      "y": 2.0
-    },
-    "creationDate": "1773053703375",
-    "salary": 55,
-    "position": "LEAD_DEVELOPER",
-    "status": "RECOMMENDED_FOR_PROMOTION",
-    "organization": {
-      "employeesCount": 3,
-      "type": "GOVERNMENT"
     }
   }
 ]
