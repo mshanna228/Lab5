@@ -40,7 +40,7 @@ public class WorkerReader {
     }
 
     public Organization readOrganization() {
-        Integer count = null; // Пользователь просил не запрашивать это поле, так как оно путается с размером
+        Integer count = null; // решили не запрашивать это поле, так как оно путается с размером
                               // коллекции. По заданию оно может быть null.
         OrganizationType type = readEnum(
                 "Введите тип организации (COMMERCIAL, GOVERNMENT, TRUST, PRIVATE_LIMITED_COMPANY, OPEN_JOINT_STOCK_COMPANY):",
