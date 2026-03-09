@@ -19,7 +19,7 @@ public class CommandManager {
     public void interactiveMode() {
         System.out.println("Программа готова к работе. Введите 'help' для справки.");
         while (true) {
-            System.out.println("> ");
+            System.out.print("> ");
             if (!scanner.hasNextLine()) break;
 
             String input = scanner.nextLine().trim();
@@ -46,8 +46,29 @@ public class CommandManager {
                     System.out.println("Запуск нового рабочего...");
                     break;
 
+                case "clear":
+                    collectionManager.clear();
+                    break;
 
+                case "exit":
+                    System.out.println("Завершение работы...");
+                    return;
+
+                default:
+                    System.out.println("Неизвестная команда: '" + command + "'. Введите 'help' для списка всех команд.");
             }
+        }
+    }
+        private void printHelp() {
+            System.out.println("Доступные команды:");
+            System.out.println(" help : вывести справку по доступным командам");
+            System.out.println(" info : вывести информацию о коллекции");
+            System.out.println(" show : вывести все элементы коллекции");
+            System.out.println(" add : добавить новый элемент в коллекцию");
+            System.out.println(" clear : очистить коллекцию");
+            System.out.println(" exit : завершить программу");
+        }
+}
 
 
 //            case "execute_script":
@@ -58,15 +79,3 @@ public class CommandManager {
 //                    // вызываем метод выполнения скрипта
 //                }
 //                break;
-        }
-        private void printHelp() {
-            System.out.println("Доступные команды:");
-            System.out.println(" help : вывести справку по доступным командам");
-            System.out.println(" info : вывести информацию о коллекции");
-            System.out.println(" show : вывести все элементы коллекции");
-            System.out.println(" add : добавить новый элемент в коллекцию");
-            System.out.println(" clear : очистить коллекцию");
-            System.out.println(" exit : завершить программу");
-        }
-    }
-}
