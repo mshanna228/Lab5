@@ -54,14 +54,13 @@ public class CommandManager {
                     System.out.println("Завершение работы...");
                     return;
 
-                default: //j
-                    System.out.println("Неизвестная команда: '" + command + "'. Введите 'help' для списка всех команд."); //i
+                default:
+                    System.out.println("Неизвестная команда: '" + command + "'. Введите 'help' для списка всех команд."); 
             }
         }
     }
 
 
-    //ugveohesdvjs
         private void printHelp() {
             System.out.println("Доступные команды:");
             System.out.println(" help : вывести справку по доступным командам");
