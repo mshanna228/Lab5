@@ -13,11 +13,13 @@ public class Main {
 //            System.out.println("it was not int.");
 //        }
 
-//        if (args.length == 0) {
-//            System.out.println("Ошибка: введите имя файла с данными в качестве аргумента командной строки.");
-//            System.exit(1);
-//        }
-//        String fileName = args[0];
+        if (args.length == 0) {
+            System.out.println("Ошибка: введите имя файла с данными в качестве аргумента командной строки.");
+            System.exit(1);
+        }
+        String fileName = args[0];
+
+        System.out.println("33");
 
 
 

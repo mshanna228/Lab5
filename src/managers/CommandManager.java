@@ -55,7 +55,7 @@ public class CommandManager {
                     return;
 
                 default:
-                    System.out.println("Неизвестная команда: '" + command + "'. Введите 'help' для списка всех команд."); 
+                    System.out.println("Неизвестная команда: '" + command + "'. Введите 'help' для списка всех команд.");
             }
         }
     }
