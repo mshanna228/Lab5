@@ -1,50 +1,34 @@
 [
   {
     "id": 1,
-    "name": "vecna",
+    "name": "a",
     "coordinates": {
       "x": 1,
       "y": 1.0
     },
-    "creationDate": "1773054202648",
-    "salary": 2,
-    "position": "LABORER",
-    "status": "HIRED",
+    "creationDate": "1773136469694",
+    "salary": 123,
+    "position": "CLEANER",
+    "status": "PROBATION",
     "organization": {
       "employeesCount": null,
-      "type": "COMMERCIAL"
+      "type": "OPEN_JOINT_STOCK_COMPANY"
     }
   },
   {
-    "id": 1,
-    "name": "Alex",
+    "id": 2,
+    "name": "b",
     "coordinates": {
-      "x": 3,
-      "y": 4.0
+      "x": 123,
+      "y": 123.0
     },
-    "creationDate": "1773067921852",
-    "salary": 1000,
-    "position": "CLEANER",
+    "creationDate": "1773136488783",
+    "salary": 123,
+    "position": "LEAD_DEVELOPER",
     "status": "REGULAR",
     "organization": {
       "employeesCount": null,
-      "type": "GOVERNMENT"
-    }
-  },
-  {
-    "id": 1,
-    "name": "Will",
-    "coordinates": {
-      "x": 6,
-      "y": 6.0
-    },
-    "creationDate": "1773068900460",
-    "salary": 345,
-    "position": "CLEANER",
-    "status": "REGULAR",
-    "organization": {
-      "employeesCount": null,
-      "type": "GOVERNMENT"
+      "type": "PRIVATE_LIMITED_COMPANY"
     }
   }
 ]

@@ -37,6 +37,9 @@ public class IdManager {
      */
     public static void useId(long id) {
         usedIds.add(id);
+        if (id >= nextId) {
+            nextId = id + 1;
+        }
     }
 
     /**

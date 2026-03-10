@@ -1,8 +1,9 @@
 package worker;
 import java.util.Date;
 
+import managers.IdManager;
+
 public class Worker implements Comparable<Worker> {
-    private static long nextId = 1; // Статическое поле для генерации уникальных ID
 
     private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
@@ -18,7 +19,7 @@ public class Worker implements Comparable<Worker> {
      */
     public Worker(String name, Coordinates coordinates, Integer salary, Position position, Status status, Organization organization) {
         // Автогенерация
-        this.id = nextId++;
+        this.id = IdManager.generateId();
         this.creationDate = new Date();
 
         setName(name);

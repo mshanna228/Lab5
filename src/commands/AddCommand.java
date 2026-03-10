@@ -23,4 +23,6 @@ public class AddCommand extends AbstractCommand {
         collectionManager.add(worker);
         System.out.println("Рабочий успешно добавлен.");
     }
+
+//    System.out.println(coll)
 }
