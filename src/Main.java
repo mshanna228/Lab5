@@ -1,7 +1,13 @@
-import worker.Worker;
+import managers.*;
+import io.*;
+import worker.*;
 
+import java.util.Comparator;
 import java.util.Scanner;
 
+/**
+ * Точка входа в программу.
+ */
 public class Main {
     public static void main(String[] args) {
 //        Scanner sc = new Scanner(System.in);
@@ -23,6 +29,19 @@ public class Main {
 
 
 
+        String fileName = args[0];
+        FileManager fileManager = new FileManager(fileName);
+        WorkerManager workerManager = new WorkerManager(fileManager);
 
+        // Автоматическое заполнение из файла
+        workerManager.getCollection().addAll(fileManager.readCollection());
+
+        ConsoleInputManager consoleInputManager = new ConsoleInputManager(new Scanner(System.in));
+        WorkerReader workerReader = new WorkerReader(consoleInputManager);
+        ScriptReader scriptReader = new ScriptReader();
+
+        CommandManager commandManager = new CommandManager(workerManager, consoleInputManager, workerReader, scriptReader);
+
+        commandManager.interactiveMode();
     }
 }
