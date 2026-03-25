@@ -30,5 +30,21 @@
       "employeesCount": null,
       "type": "PRIVATE_LIMITED_COMPANY"
     }
+  },
+  {
+    "id": 3,
+    "name": "a",
+    "coordinates": {
+      "x": 2,
+      "y": 2.0
+    },
+    "creationDate": "1774446934559",
+    "salary": 2,
+    "position": "CLEANER",
+    "status": "REGULAR",
+    "organization": {
+      "employeesCount": null,
+      "type": "OPEN_JOINT_STOCK_COMPANY"
+    }
   }
 ]
