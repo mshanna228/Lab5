@@ -4,7 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Менеджер для генерации и контроля уникальности ID.
+ *  * Менеджер для генерации и контроля уникальности ID.
+ * private static long nextId = 1;
+ *     private static final Set<Long> usedIds = new HashSet<>();
  */
 public class IdManager {
     private static long nextId = 1;

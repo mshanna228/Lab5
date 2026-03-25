@@ -36,12 +36,21 @@ public class CommandManager {
         register("average_of_salary", new AverageOfSalaryCommand(collectionManager));
         register("count_by_status", new CountByStatusCommand(collectionManager));
         register("filter_by_salary", new FilterBySalaryCommand(collectionManager));
+        register("help", new HelpCommand(commands.values()));
     }
 
+    /**
+     * метод register отвечает за добавление команд во внутреннее «хранилище» программы
+     * @param name
+     * @param command
+     */
     private void register(String name, Command command) {
         commands.put(name, command);
     }
 
+    /**
+     * бесконечный цикл
+     */
     public void interactiveMode() {
         System.out.println("Программа готова к работе. Введите 'help' для справки.");
         while (true) {

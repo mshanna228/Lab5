@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 /**
  * Менеджер для работы с файлами (JSON).
- * Реализован простой парсер JSON, так как внешние библиотеки не предоставлены.
+ *  * Реализован простой парсер JSON, так как внешние библиотеки не предоставлены.
  */
 public class FileManager {
     private final String fileName;
@@ -67,7 +67,7 @@ public class FileManager {
             String content = sb.toString().trim();
             if (content.isEmpty() || content.equals("[]")) return collection;
 
-            // Упрощенный парсинг JSON объектов
+            //  парсинг JSON
             Pattern pattern = Pattern.compile("\\{[^\\{\\}]*(\\{[^\\{\\}]*\\}[^\\{\\}]*)*\\}");
             Matcher matcher = pattern.matcher(content);
             while (matcher.find()) {

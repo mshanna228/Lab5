@@ -1,0 +1,9 @@
+add
+TestWorker
+1
+1.5
+1000
+LABORER
+HIRED
+GOVERNMENT
+show

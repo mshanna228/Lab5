@@ -25,7 +25,7 @@ public class Main {
         FileManager fileManager = new FileManager(fileName);
         WorkerManager workerManager = new WorkerManager(fileManager);
 
-        // Автоматическое заполнение из файла
+        // Авт. заполнение из файла
         workerManager.getCollection().addAll(fileManager.readCollection());
 
         ConsoleInputManager consoleInputManager = new ConsoleInputManager(new Scanner(System.in));

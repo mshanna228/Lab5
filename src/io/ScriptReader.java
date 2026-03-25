@@ -6,10 +6,11 @@ import java.util.Scanner;
 import java.util.Stack;
 
 /**
+ *
  * Класс для чтения команд из скрипта.
  */
 public class ScriptReader {
-    private final Stack<Scanner> scanners = new Stack<>();
+    private final Stack<Scanner> scanners = new Stack<>(); //LIFO
     private final Stack<String> fileNames = new Stack<>();
 
     public void pushFile(String fileName) throws FileNotFoundException {

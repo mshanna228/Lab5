@@ -15,7 +15,13 @@ public class Worker implements Comparable<Worker> {
     private Organization organization; //Поле не может быть null
 
     /**
-     * Конструктор для создания нового объекта
+     * Конструктор для создания нового объекта Worker
+     * @param name
+     * @param coordinates
+     * @param salary
+     * @param position
+     * @param status
+     * @param organization
      */
     public Worker(String name, Coordinates coordinates, Integer salary, Position position, Status status, Organization organization) {
         // Автогенерация
