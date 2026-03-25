@@ -1,4 +1,5 @@
 package exceptions;
+//@FunctionalInterface
 
 /**
  * Исключение, выбрасываемое при ошибках в командах.
