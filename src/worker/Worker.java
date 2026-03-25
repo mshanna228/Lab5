@@ -119,7 +119,8 @@ public class Worker implements Comparable<Worker> {
     }
 
     @Override
-    public int compareTo(Worker other) {
+    public int compareTo(Worker other)
+    {
         return Long.compare(this.id, other.id);
     }
 
