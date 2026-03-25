@@ -15,6 +15,12 @@ public class Worker implements Comparable<Worker> {
 
     /**
      * Конструктор для создания нового объекта
+     * String name,
+     * Coordinates coordinates,
+     * Integer salary,
+     * Position position,
+     * Status status,
+     * Organization organization
      */
     public Worker(String name, Coordinates coordinates, Integer salary, Position position, Status status, Organization organization) {
         // Автогенерация
