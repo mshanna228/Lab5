@@ -2,6 +2,8 @@ package commands;
 
 /**
  * Базовый класс для всех команд.
+ *  String name;
+ *  String description;
  */
 public abstract class AbstractCommand implements Command {
     private final String name;

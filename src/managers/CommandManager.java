@@ -21,7 +21,6 @@ public class CommandManager {
         this.consoleInputManager = consoleInputManager;
         this.scriptReader = scriptReader;
 
-        register("help", new HelpCommand(commands.values()));
         register("info", new InfoCommand(collectionManager));
         register("show", new ShowCommand(collectionManager));
         register("add", new AddCommand(collectionManager, workerReader));
