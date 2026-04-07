@@ -22,7 +22,7 @@ public class Main {
 
 
         String fileName = args[0];
-        FileManager fileManager = new FileManager(fileName);
+        FileManger fileManager = new FileManager(fileName);
         WorkerManager workerManager = new WorkerManager(fileManager);
 
         // Автоматическое заполнение из файла

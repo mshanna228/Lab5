@@ -17,6 +17,10 @@ public class WorkerReader {
         String name = readString("Введите имя рабочего:", false);
         Coordinates coordinates = readCoordinates();
         Integer salary = readInt("Введите зарплату:", true);
+        while (salary != null && salary <= 0) {
+            System.out.println("Ошибка: Зарплата должна быть больше 0");
+            salary = readInt("Введите зарплату:", true);
+        }
         Position position = readEnum("Введите должность (LABORER, LEAD_DEVELOPER, CLEANER):", Position.class, false);
         Status status = readEnum("Введите статус (FIRED, HIRED, RECOMMENDED_FOR_PROMOTION, REGULAR, PROBATION):",
                 Status.class, true);
