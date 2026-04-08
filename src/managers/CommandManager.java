@@ -16,11 +16,11 @@ public class CommandManager {
     private final ConsoleInputManager consoleInputManager;
     private final ScriptReader scriptReader;
 
-    public CommandManager(CollectionManager collectionManager, ConsoleInputManager consoleInputManager, 
-                          WorkerReader workerReader, ScriptReader scriptReader) {
+    public CommandManager(CollectionManager collectionManager, ConsoleInputManager consoleInputManager,
+            WorkerReader workerReader, ScriptReader scriptReader) {
         this.consoleInputManager = consoleInputManager;
         this.scriptReader = scriptReader;
-//enum
+        // enum
         register("info", new InfoCommand(collectionManager));
         register("show", new ShowCommand(collectionManager));
         register("add", new AddCommand(collectionManager, workerReader));
@@ -40,7 +40,9 @@ public class CommandManager {
     }
 
     /**
-     * метод register отвечает за добавление команд во внутреннее «хранилище» программы
+     * метод register отвечает за добавление команд во внутреннее хранилище
+     * программы
+     * 
      * @param name
      * @param command
      */
@@ -57,14 +59,17 @@ public class CommandManager {
             String input;
             if (!scriptReader.isEmpty()) {
                 input = scriptReader.readLine();
-                if (input == null) continue;
+                if (input == null)
+                    continue;
                 System.out.println("> " + input);
             } else {
                 input = consoleInputManager.readLine(">");
             }
 
-            if (input == null) break;
-            if (input.isEmpty()) continue;
+            if (input == null)
+                break;
+            if (input.isEmpty())
+                continue;
 
             String[] tokens = input.split("\\s+", 2);
             String commandName = tokens[0].toLowerCase();
@@ -78,7 +83,8 @@ public class CommandManager {
                     System.err.println("Ошибка при выполнении команды: " + e.getMessage());
                 }
             } else {
-                System.out.println("Неизвестная команда: '" + commandName + "'. Введите 'help' для списка всех команд.");
+                System.out
+                        .println("Неизвестная команда: '" + commandName + "'. Введите 'help' для списка всех команд.");
             }
         }
     }
