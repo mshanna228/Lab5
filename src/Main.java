@@ -10,19 +10,19 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
-        if (args.length == 0) {
+        if (args.length == 0) {                   //1
             System.err.println("Ошибка: имя файла должно передаваться как аргумент командной строки.");
             System.exit(1);
         }
 
-//        var people = new ArrayList<Worker>();
-//        people.add(new Worker("Tom", new Coordinates(3, 4.0), 66, new Position(LABORER), new Status(HIRED), new Organization(GOVERNMENT)));
-//        people.add(new Worker("Harry", new Coordinates(4, 5.0), 36, new Position(LABORER), new Status(HIRED), new Organization(GOVERNMENT)));
-//        Comparator<Worker> totalComporator = new
+
+
+
+
 
 
         String fileName = args[0];
-        FileManager fileManager = new FileManager(fileName);
+        FileManager fileManager = new FileManager(fileName); //2
         WorkerManager workerManager = new WorkerManager(fileManager);
 
         // Авт. заполнение из файла

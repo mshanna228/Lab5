@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "a",
+    "coordinates": {
+      "x": 1,
+      "y": 1.0
+    },
+    "creationDate": "1773136469694",
+    "salary": 123,
+    "position": "CLEANER",
+    "status": "PROBATION",
+    "organization": {
+      "employeesCount": null,
+      "type": "OPEN_JOINT_STOCK_COMPANY"
+    }
+  },
+  {
+    "id": 2,
+    "name": "b",
+    "coordinates": {
+      "x": 123,
+      "y": 123.0
+    },
+    "creationDate": "1773136488783",
+    "salary": 123,
+    "position": "LEAD_DEVELOPER",
+    "status": "REGULAR",
+    "organization": {
+      "employeesCount": null,
+      "type": "PRIVATE_LIMITED_COMPANY"
+    }
+  },
+  {
+    "id": 3,
+    "name": "a",
+    "coordinates": {
+      "x": 2,
+      "y": 2.0
+    },
+    "creationDate": "1774446934559",
+    "salary": 2,
+    "position": "CLEANER",
+    "status": "REGULAR",
+    "organization": {
+      "employeesCount": null,
+      "type": "OPEN_JOINT_STOCK_COMPANY"
+    }
+  }
+]

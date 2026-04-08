@@ -20,7 +20,7 @@ public class CommandManager {
                           WorkerReader workerReader, ScriptReader scriptReader) {
         this.consoleInputManager = consoleInputManager;
         this.scriptReader = scriptReader;
-
+//enum
         register("info", new InfoCommand(collectionManager));
         register("show", new ShowCommand(collectionManager));
         register("add", new AddCommand(collectionManager, workerReader));

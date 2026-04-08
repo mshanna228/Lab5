@@ -63,7 +63,7 @@ public class WorkerManager implements CollectionManager {
         if (worker != null) {
             collection.remove(worker);
             IdManager.removeId(id);
-            System.out.println("Рабочий успешно удален.");
+            System.out.println("Рабочий удален.");
         } else {
             System.out.println("Рабочий с таким ID не найден.");
         }

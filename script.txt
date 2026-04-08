@@ -7,3 +7,5 @@ LABORER
 HIRED
 GOVERNMENT
 show
+
+execute_script script.txt

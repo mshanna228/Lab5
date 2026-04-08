@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 /**
  * Менеджер для работы с файлами (JSON).
- *  * Реализован простой парсер JSON, так как внешние библиотеки не предоставлены.
+ * *  простой парсер JSON, БЕЗ внешние библиотеки.
  */
 public class FileManager {
     private final String fileName;
@@ -33,13 +33,15 @@ public class FileManager {
                 json.append("    \"creationDate\": \"").append(w.getCreationDate().getTime()).append("\",\n");
                 json.append("    \"salary\": ").append(w.getSalary()).append(",\n");
                 json.append("    \"position\": \"").append(w.getPosition()).append("\",\n");
-                json.append("    \"status\": ").append(w.getStatus() == null ? "null" : "\"" + w.getStatus() + "\"").append(",\n");
+                json.append("    \"status\": ").append(w.getStatus() == null ? "null" : "\"" + w.getStatus() + "\"")
+                        .append(",\n");
                 json.append("    \"organization\": {\n");
                 json.append("      \"employeesCount\": ").append(w.getOrganization().getEmployeesCount()).append(",\n");
                 json.append("      \"type\": \"").append(w.getOrganization().getType()).append("\"\n");
                 json.append("    }\n");
                 json.append("  }");
-                if (it.hasNext()) json.append(",");
+                if (it.hasNext())
+                    json.append(",");
                 json.append("\n");
             }
             json.append("]");
@@ -65,9 +67,10 @@ public class FileManager {
                 sb.append((char) c);
             }
             String content = sb.toString().trim();
-            if (content.isEmpty() || content.equals("[]")) return collection;
+            if (content.isEmpty() || content.equals("[]"))
+                return collection;
 
-            //  парсинг JSON
+            // парсинг JSON
             Pattern pattern = Pattern.compile("\\{[^\\{\\}]*(\\{[^\\{\\}]*\\}[^\\{\\}]*)*\\}");
             Matcher matcher = pattern.matcher(content);
             while (matcher.find()) {
@@ -89,29 +92,28 @@ public class FileManager {
         Worker w = new Worker();
         w.setId(Long.parseLong(getValue(json, "id")));
         w.setName(unescape(getValue(json, "name")));
-        
+
         Coordinates coords = new Coordinates(
-            Integer.parseInt(getValue(json, "x")),
-            Double.parseDouble(getValue(json, "y"))
-        );
+                Integer.parseInt(getValue(json, "x")),
+                Double.parseDouble(getValue(json, "y")));
         w.setCoordinates(coords);
-        
+
         w.setCreationDate(new Date(Long.parseLong(getValue(json, "creationDate"))));
-        
+
         String salaryStr = getValue(json, "salary");
         w.setSalary(salaryStr.equals("null") ? null : Integer.parseInt(salaryStr));
-        
+
         w.setPosition(Position.valueOf(getValue(json, "position")));
-        
+
         String statusStr = getValue(json, "status");
         w.setStatus(statusStr.equals("null") ? null : Status.valueOf(statusStr));
-        
+
         Organization org = new Organization(
-            getValue(json, "employeesCount").equals("null") ? null : Integer.parseInt(getValue(json, "employeesCount")),
-            OrganizationType.valueOf(getValue(json, "type"))
-        );
+                getValue(json, "employeesCount").equals("null") ? null
+                        : Integer.parseInt(getValue(json, "employeesCount")),
+                OrganizationType.valueOf(getValue(json, "type")));
         w.setOrganization(org);
-        
+
         return w;
     }
 
