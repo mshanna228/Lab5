@@ -1,0 +1,48 @@
+classDiagram
+    class Main {
+        +main(args: String[])
+    }
+
+    class CommandManager {
+        -Map commands
+        +interactiveMode()
+        -register(name, command)
+    }
+
+    class WorkerManager {
+        -PriorityQueue collection
+        +add(worker)
+        +removeById(id)
+        +update(id, worker)
+    }
+
+    class Worker {
+        -long id
+        -String name
+        -Coordinates coordinates
+        -Integer salary
+        -Position position
+        -Status status
+        -Organization organization
+    }
+
+    class Command {
+        <<interface>>
+        +execute(argument)
+    }
+
+    class AbstractCommand {
+        <<abstract>>
+        -String name
+        -String description
+    }
+
+    Main --> FileManager
+    Main --> WorkerManager
+    Main --> CommandManager
+    CommandManager --> Command : вызывает
+    AbstractCommand ..|> Command
+    AddCommand --|> AbstractCommand
+    ShowCommand --|> AbstractCommand
+    WorkerManager --> Worker : содержит
+    WorkerManager ..|> CollectionManager
