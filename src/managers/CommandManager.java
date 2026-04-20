@@ -6,7 +6,6 @@ import io.ScriptReader;
 import io.WorkerReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 /**
  * Класс для управления командами.
@@ -20,22 +19,11 @@ public class CommandManager {
             WorkerReader workerReader, ScriptReader scriptReader) {
         this.consoleInputManager = consoleInputManager;
         this.scriptReader = scriptReader;
-        // enum
-        register("info", new InfoCommand(collectionManager));
-        register("show", new ShowCommand(collectionManager));
-        register("add", new AddCommand(collectionManager, workerReader));
-        register("update", new UpdateCommand(collectionManager, workerReader));
-        register("remove_by_id", new RemoveByIdCommand(collectionManager));
-        register("clear", new ClearCommand(collectionManager));
-        register("save", new SaveCommand(collectionManager));
-        register("execute_script", new ExecuteScriptCommand(scriptReader, this));
-        register("exit", new ExitCommand());
-        register("head", new HeadCommand(collectionManager));
-        register("add_if_max", new AddIfMaxCommand(collectionManager, workerReader));
-        register("add_if_min", new AddIfMinCommand(collectionManager, workerReader));
-        register("average_of_salary", new AverageOfSalaryCommand(collectionManager));
-        register("count_by_status", new CountByStatusCommand(collectionManager));
-        register("filter_by_salary", new FilterBySalaryCommand(collectionManager));
+
+        for (CommandType type : CommandType.values()) {
+            Command command = type.create(collectionManager, workerReader, scriptReader, this);
+            register(command.getName().split(" ")[0], command);
+        }
         register("help", new HelpCommand(commands.values()));
     }
 
