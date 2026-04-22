@@ -15,12 +15,6 @@ public class Main {
             System.exit(1);
         }
 
-
-
-
-
-
-
         String fileName = args[0];
         FileManager fileManager = new FileManager(fileName); //2
         WorkerManager workerManager = new WorkerManager(fileManager);
