@@ -19,6 +19,7 @@ public class ExecuteScriptCommand extends AbstractCommand {
 
     @Override
     public void execute(String argument) {
+//        File scriptFile = new File(filname);
         if (argument.isEmpty()) {
             System.out.println("Ошибка: введите имя файла.");
             return;

@@ -4,13 +4,30 @@ import worker.*;
 import java.util.Arrays;
 
 /**
- * Класс для чтения объектов Worker из консоли.
+ * Класс для чтения объектов Worker.
+ * Поддерживает автоматическое чтение из ScriptReader при выполнении скриптов.
  */
 public class WorkerReader {
     private final ConsoleInputManager inputManager;
+    private final ScriptReader scriptReader;
 
-    public WorkerReader(ConsoleInputManager inputManager) {
+    public WorkerReader(ConsoleInputManager inputManager, ScriptReader scriptReader) {
         this.inputManager = inputManager;
+        this.scriptReader = scriptReader;
+    }
+
+    /**
+     * Вспомогательный метод для выбора источника ввода.
+     */
+    private String getNextLine(String message) {
+        if (scriptReader != null && !scriptReader.isEmpty()) {
+            String line = scriptReader.readLine();
+            if (line != null) {
+                System.out.println(message + " [считано из скрипта]: " + line);
+            }
+            return line;
+        }
+        return inputManager.readLine(message);
     }
 
     public Worker readWorker() {
@@ -27,12 +44,12 @@ public class WorkerReader {
 
     public Coordinates readCoordinates() {
         Integer x = readInt("Введите координату X (макс. 709):", false);
-        while (x > 709) {
+        while (x != null && x > 709) {
             System.out.println("Ошибка: X не может быть больше 709.");
             x = readInt("Введите координату X (макс. 709):", false);
         }
         Double y = readDouble("Введите координату Y (больше -414):", false);
-        while (y <= -414) {
+        while (y != null && y <= -414) {
             System.out.println("Ошибка: Y должен быть больше -414.");
             y = readDouble("Введите координату Y (больше -414):", false);
         }
@@ -40,8 +57,7 @@ public class WorkerReader {
     }
 
     public Organization readOrganization() {
-        Integer count = null; // решили не запрашивать это поле, так как оно путается с размером
-                              // коллекции. По заданию оно может быть null.
+        Integer count = null;
         OrganizationType type = readEnum(
                 "Введите тип организации (COMMERCIAL, GOVERNMENT, TRUST, PRIVATE_LIMITED_COMPANY, OPEN_JOINT_STOCK_COMPANY):",
                 OrganizationType.class, false);
@@ -50,10 +66,12 @@ public class WorkerReader {
 
     private String readString(String message, boolean canBeNull) {
         while (true) {
-            String s = inputManager.readLine(message);
+            String s = getNextLine(message);
             if (s == null || s.isEmpty()) {
-                if (canBeNull)
-                    return null;
+                if (canBeNull) return null;
+                if (scriptReader != null && !scriptReader.isEmpty()) {
+                    throw new RuntimeException("Ошибка в скрипте: пустое значение в обязательном поле.");
+                }
                 System.out.println("Ошибка: поле не может быть пустым.");
                 continue;
             }
@@ -63,15 +81,14 @@ public class WorkerReader {
 
     private Integer readInt(String message, boolean canBeNull) {
         while (true) {
-            String s = inputManager.readLine(message);
+            String s = getNextLine(message);
             if (s == null || s.isEmpty()) {
-                if (canBeNull)
-                    return null;
+                if (canBeNull) return null;
                 System.out.println("Ошибка: поле не может быть пустым.");
                 continue;
             }
             try {
-                return Integer.parseInt(s);
+                return Integer.parseInt(s.trim());
             } catch (NumberFormatException e) {
                 System.out.println("Ошибка: введите целое число.");
             }
@@ -80,15 +97,14 @@ public class WorkerReader {
 
     private Double readDouble(String message, boolean canBeNull) {
         while (true) {
-            String s = inputManager.readLine(message);
+            String s = getNextLine(message);
             if (s == null || s.isEmpty()) {
-                if (canBeNull)
-                    return null;
+                if (canBeNull) return null;
                 System.out.println("Ошибка: поле не может быть пустым.");
                 continue;
             }
             try {
-                return Double.parseDouble(s);
+                return Double.parseDouble(s.trim().replace(',', '.'));
             } catch (NumberFormatException e) {
                 System.out.println("Ошибка: введите число.");
             }
@@ -97,15 +113,14 @@ public class WorkerReader {
 
     private <E extends Enum<E>> E readEnum(String message, Class<E> enumClass, boolean canBeNull) {
         while (true) {
-            String s = inputManager.readLine(message);
+            String s = getNextLine(message);
             if (s == null || s.isEmpty()) {
-                if (canBeNull)
-                    return null;
+                if (canBeNull) return null;
                 System.out.println("Ошибка: поле не может быть пустым.");
                 continue;
             }
             try {
-                return Enum.valueOf(enumClass, s.toUpperCase());
+                return Enum.valueOf(enumClass, s.trim().toUpperCase());
             } catch (IllegalArgumentException e) {
                 System.out.println(
                         "Ошибка: введите значение из списка: " + Arrays.toString(enumClass.getEnumConstants()));

@@ -25,14 +25,19 @@ public class Main {
         FileManager fileManager = new FileManager(fileName); //2
         WorkerManager workerManager = new WorkerManager(fileManager);
 
-        // Авт. заполнение из файла
+        // авт. заполнение из файла
         workerManager.getCollection().addAll(fileManager.readCollection());
 
+
+
         ConsoleInputManager consoleInputManager = new ConsoleInputManager(new Scanner(System.in));
-        WorkerReader workerReader = new WorkerReader(consoleInputManager);
         ScriptReader scriptReader = new ScriptReader();
 
+//  scriptReader Передаем в конструктор WorkerReader!!!!!!!!!!!!!!!!!!!
+        WorkerReader workerReader = new WorkerReader(consoleInputManager, scriptReader);
+
         CommandManager commandManager = new CommandManager(workerManager, consoleInputManager, workerReader, scriptReader);
+
 
         commandManager.interactiveMode();
     }
