@@ -23,10 +23,15 @@ public class ExecuteScriptCommand extends AbstractCommand {
             System.out.println("Ошибка: введите имя файла.");
             return;
         }
+
+        String[] parts = argument.trim().split("\\s+");
+        String fileName = parts[0];
+        String[] scriptArgs = new String[parts.length - 1];
+        System.arraycopy(parts, 1, scriptArgs, 0, parts.length - 1);
+
         try {
-            scriptReader.pushFile(argument);
-            System.out.println("Выполнение скрипта " + argument + "...");
-            // CommandManager.interactiveMode() will continue reading from scriptReader if it's set up correctly
+            scriptReader.pushFile(fileName, scriptArgs);
+            System.out.println("Выполнение скрипта " + fileName + " (аргументов: " + scriptArgs.length + ")...");
         } catch (FileNotFoundException e) {
             System.out.println("Ошибка: файл не найден.");
         } catch (RuntimeException e) {

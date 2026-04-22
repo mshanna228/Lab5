@@ -8,7 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Класс для управления командами.
+ * Класс для регистрации команд и управления командами.
+ * Все команды сохраняются в HashMap<String, Command>, где ключ — имя команды в
+ * нижнем регистре.
  */
 public class CommandManager {
     private final Map<String, Command> commands = new HashMap<>();
@@ -28,7 +30,7 @@ public class CommandManager {
     }
 
     /**
-     * метод register отвечает за добавление команд во внутреннее хранилище
+     * метод register  добавление команд в хранилище
      * программы
      * 
      * @param name
@@ -39,10 +41,13 @@ public class CommandManager {
     }
 
     /**
-     * бесконечный цикл
+     *
      */
     public void interactiveMode() {
-        System.out.println("Программа готова к работе. Введите 'help' для справки.");
+        System.out.println("=========================================");
+        System.out.println("Программа работает. Введите 'help'.");
+        System.out.println("=========================================");
+
         while (true) {
             String input;
             if (!scriptReader.isEmpty()) {
@@ -71,8 +76,7 @@ public class CommandManager {
                     System.err.println("Ошибка при выполнении команды: " + e.getMessage());
                 }
             } else {
-                System.out
-                        .println("Неизвестная команда: '" + commandName + "'. Введите 'help' для списка всех команд.");
+                System.out.println("Неизвестная команда: '" + commandName + "'. Введите 'help' для списка всех команд.");
             }
         }
     }

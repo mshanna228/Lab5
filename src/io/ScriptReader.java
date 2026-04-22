@@ -12,24 +12,39 @@ import java.util.Stack;
 public class ScriptReader {
     private final Stack<Scanner> scanners = new Stack<>(); //LIFO
     private final Stack<String> fileNames = new Stack<>();
+    private final Stack<String[]> argumentsStack = new Stack<>();
 
     public void pushFile(String fileName) throws FileNotFoundException {
+        pushFile(fileName, new String[0]);
+    }
+
+    public void pushFile(String fileName, String[] arguments) throws FileNotFoundException {
         File file = new File(fileName);
         if (fileNames.contains(file.getAbsolutePath())) {
             throw new RuntimeException("Рекурсия в скриптах обнаружена!");
         }
         scanners.push(new Scanner(file));
         fileNames.push(file.getAbsolutePath());
+        argumentsStack.push(arguments);
     }
 
     public String readLine() {
         while (!scanners.isEmpty()) {
             Scanner s = scanners.peek();
             if (s.hasNextLine()) {
-                return s.nextLine().trim();
+                String line = s.nextLine().trim();
+                String[] currentArgs = argumentsStack.peek();
+
+                if (currentArgs.length > 0) {
+                    for (int i = currentArgs.length; i > 0; i--) {
+                        line = line.replace("$" + i, currentArgs[i - 1]);
+                    }
+                }
+                return line;
             } else {
                 scanners.pop().close();
                 fileNames.pop();
+                argumentsStack.pop();
             }
         }
         return null;
