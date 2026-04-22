@@ -3,7 +3,7 @@ package commands;
 import managers.CollectionManager;
 
 /**
- * Команда 'remove_by_id'. Удаляет элемент из коллекции по ID.
+ * Команда 'remove_by_id' yдаляет элемент из коллекции по ID.
  */
 public class RemoveByIdCommand extends AbstractCommand {
     private final CollectionManager collectionManager;
@@ -14,7 +14,7 @@ public class RemoveByIdCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute(String argument) {
+    public void execute(String argument) { //здесь аргумент равен id, оподается из tokens[1] CommandManager
         if (argument.isEmpty()) {
             System.out.println("Ошибка: введите ID для удаления.");
             return;

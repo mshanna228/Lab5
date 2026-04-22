@@ -9,8 +9,7 @@ import java.util.Map;
 
 /**
  * Класс для регистрации команд и управления командами.
- * Все команды сохраняются в HashMap<String, Command>, где ключ — имя команды в
- * нижнем регистре.
+ *  команды сохр. в HashMap<String, Command>,  ключ — имя команды в ниж. регистре.
  */
 public class CommandManager {
     private final Map<String, Command> commands = new HashMap<>();
@@ -64,7 +63,7 @@ public class CommandManager {
             if (input.isEmpty())
                 continue;
 
-            String[] tokens = input.split("\\s+", 2);
+            String[] tokens = input.split("\\s+", 2); //елим строку по пробелам на две части tokens[0] и tokens[1]
             String commandName = tokens[0].toLowerCase();
             String argument = tokens.length > 1 ? tokens[1] : "";
 

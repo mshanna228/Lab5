@@ -12,7 +12,7 @@ public class ExecuteScriptCommand extends AbstractCommand {
     private final CommandManager commandManager;
 
     public ExecuteScriptCommand(ScriptReader scriptReader, CommandManager commandManager) {
-        super("execute_script file_name", "считать и исполнить скрипт из указанного файла");
+        super("execute_script file_name", "исполнить скрипт из файла");
         this.scriptReader = scriptReader;
         this.commandManager = commandManager;
     }
