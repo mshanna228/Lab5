@@ -7,8 +7,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Менеджер для работы с файлами (JSON).
- * *  простой парсер JSON, БЕЗ внешние библиотеки.
+ * Менеджер для работы с файлами
+ * *   парсер JSON
  */
 public class FileManager {
     private final String fileName;

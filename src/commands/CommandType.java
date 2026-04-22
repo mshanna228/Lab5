@@ -26,7 +26,7 @@ public enum CommandType {
     FILTER_BY_SALARY;
 
     /**
-     * Создает экземпляр команды.
+     * Создается экземпляр команды.
      *
      * @param collectionManager Менеджер коллекции
      * @param workerReader Читатель данных работника

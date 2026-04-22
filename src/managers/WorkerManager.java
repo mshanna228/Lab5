@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
 /**
- * Реализация менеджера коллекции.
+ *  менеджер коллекции.
  */
 public class WorkerManager implements CollectionManager {
     private PriorityQueue<Worker> collection = new PriorityQueue<>();
