@@ -10,6 +10,7 @@ public class ConsoleInputManager {
     private final Scanner scanner;
 
     public ConsoleInputManager(Scanner scanner) {
+
         this.scanner = scanner;
     }
 
@@ -31,10 +32,11 @@ public class ConsoleInputManager {
     }
 
     /**
-     * Проверяет, есть ли следующая строка.
+     * есть ли следующая строка.
      * @return true, если есть.
      */
     public boolean hasNextLine() {
+
         return scanner.hasNextLine();
     }
 }

@@ -15,3 +15,4 @@ LEAD_DEVELOPER
 REGULAR
 COMMERCIAL
 show
+execute_script script2.txt

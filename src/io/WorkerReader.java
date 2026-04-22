@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 /**
  * Класс для чтения объектов Worker.
- * Поддерживает автоматическое чтение из ScriptReader при выполнении скриптов.
+ * Поддерживает авт. чтение из ScriptReader при выполнении скриптов.
  */
 public class WorkerReader {
     private final ConsoleInputManager inputManager;
@@ -17,7 +17,7 @@ public class WorkerReader {
     }
 
     /**
-     * Вспомогательный метод для выбора источника ввода.
+     *  метод для выбора источника ввода.
      */
     private String getNextLine(String message) {
         if (scriptReader != null && !scriptReader.isEmpty()) {

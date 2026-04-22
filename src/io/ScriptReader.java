@@ -21,7 +21,7 @@ public class ScriptReader {
     public void pushFile(String fileName, String[] arguments) throws FileNotFoundException {
         File file = new File(fileName);
         if (fileNames.contains(file.getAbsolutePath())) {
-            throw new RuntimeException("Рекурсия в скриптах обнаружена!");
+            throw new RuntimeException("Рекурсия в скриптах!!!!!!");
         }
         scanners.push(new Scanner(file));
         fileNames.push(file.getAbsolutePath());
@@ -30,7 +30,7 @@ public class ScriptReader {
 
     public String readLine() {
         while (!scanners.isEmpty()) {
-            Scanner s = scanners.peek();
+            Scanner s = scanners.peek(); // возвр. верхний эл. но не уд.
             if (s.hasNextLine()) {
                 String line = s.nextLine().trim();
                 String[] currentArgs = argumentsStack.peek();
@@ -51,6 +51,7 @@ public class ScriptReader {
     }
 
     public boolean isEmpty() {
+
         return scanners.isEmpty();
     }
 }
