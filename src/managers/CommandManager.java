@@ -29,8 +29,7 @@ public class CommandManager {
     }
 
     /**
-     * метод register  добавление команд в хран.
-     * программы
+     * метод register  добавление команд в хран. программы
      * 
      * @param name
      * @param command
