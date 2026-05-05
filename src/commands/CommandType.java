@@ -34,24 +34,41 @@ public enum CommandType {
      * @param commandManager Менеджер команд (для execute_script)
      * @return Экземпляр команды
      */
-    public Command create(CollectionManager collectionManager, WorkerReader workerReader, 
+    public Command create(CollectionManager collectionManager, WorkerReader workerReader,
                           ScriptReader scriptReader, CommandManager commandManager) {
-        return switch (this) {
-            case INFO -> new InfoCommand(collectionManager);
-            case SHOW -> new ShowCommand(collectionManager);
-            case ADD -> new AddCommand(collectionManager, workerReader);
-            case UPDATE -> new UpdateCommand(collectionManager, workerReader);
-            case REMOVE_BY_ID -> new RemoveByIdCommand(collectionManager);
-            case CLEAR -> new ClearCommand(collectionManager);
-            case SAVE -> new SaveCommand(collectionManager);
-            case EXECUTE_SCRIPT -> new ExecuteScriptCommand(scriptReader, commandManager);
-            case EXIT -> new ExitCommand();
-            case HEAD -> new HeadCommand(collectionManager);
-            case ADD_IF_MAX -> new AddIfMaxCommand(collectionManager, workerReader);
-            case ADD_IF_MIN -> new AddIfMinCommand(collectionManager, workerReader);
-            case AVERAGE_OF_SALARY -> new AverageOfSalaryCommand(collectionManager);
-            case COUNT_BY_STATUS -> new CountByStatusCommand(collectionManager);
-            case FILTER_BY_SALARY -> new FilterBySalaryCommand(collectionManager);
-        };
+        switch (this) {
+            case INFO:
+                return new InfoCommand(collectionManager);
+            case SHOW:
+                return new ShowCommand(collectionManager);
+            case ADD:
+                return new AddCommand(collectionManager, workerReader);
+            case UPDATE:
+                return new UpdateCommand(collectionManager, workerReader);
+            case REMOVE_BY_ID:
+                return new RemoveByIdCommand(collectionManager);
+            case CLEAR:
+                return new ClearCommand(collectionManager);
+            case SAVE:
+                return new SaveCommand(collectionManager);
+            case EXECUTE_SCRIPT:
+                return new ExecuteScriptCommand(scriptReader, commandManager);
+            case EXIT:
+                return new ExitCommand();
+            case HEAD:
+                return new HeadCommand(collectionManager);
+            case ADD_IF_MAX:
+                return new AddIfMaxCommand(collectionManager, workerReader);
+            case ADD_IF_MIN:
+                return new AddIfMinCommand(collectionManager, workerReader);
+            case AVERAGE_OF_SALARY:
+                return new AverageOfSalaryCommand(collectionManager);
+            case COUNT_BY_STATUS:
+                return new CountByStatusCommand(collectionManager);
+            case FILTER_BY_SALARY:
+                return new FilterBySalaryCommand(collectionManager);
+            default:
+                throw new IllegalArgumentException("Unknown command type: " + this);
+        }
     }
 }
