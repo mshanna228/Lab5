@@ -43,18 +43,35 @@ public class WorkerReader {
     }
 
     public Coordinates readCoordinates() {
-        Integer x = readInt("Введите координату X (макс. 709):", false);
-        while (x != null && x > 709) {
-            System.out.println("Ошибка: X не может быть больше 709.");
+        Integer x;
+        while (true) {
             x = readInt("Введите координату X (макс. 709):", false);
+            if (x != null && x <= 709) break; // Соответствие ТЗ: x <= 709
+            System.out.println("Ошибка: X не может быть больше 709.");
         }
-        Double y = readDouble("Введите координату Y (больше -414):", false);
-        while (y != null && y <= -414) {
-            System.out.println("Ошибка: Y должен быть больше -414.");
+
+        Double y;
+        while (true) {
             y = readDouble("Введите координату Y (больше -414):", false);
+            if (y != null && y > -414) break; // Соответствие ТЗ: y > -414
+            System.out.println("Ошибка: Y должен быть больше -414.");
         }
+
         return new Coordinates(x, y);
     }
+//    public Coordinates readCoordinates() {
+//        Integer x = readInt("Введите координату X (макс. 709):", false);
+//        while (x != null && x > 709) {
+//            System.out.println("Ошибка: X не может быть больше 709.");
+//            x = readInt("Введите координату X (макс. 709):", false);
+//        }
+//        Double y = readDouble("Введите координату Y (больше -414):", false);
+//        while (y != null && y <= -414) {
+//            System.out.println("Ошибка: Y должен быть больше -414.");
+//            y = readDouble("Введите координату Y (больше -414):", false);
+//        }
+//        return new Coordinates(x, y);
+//    }
 
     public Organization readOrganization() {
         Integer count = null;
@@ -88,9 +105,23 @@ public class WorkerReader {
                 continue;
             }
             try {
-                return Integer.parseInt(s.trim());
+                java.math.BigInteger bigVal = new java.math.BigInteger(s.trim());
+                if (bigVal.compareTo(java.math.BigInteger.valueOf(Integer.MAX_VALUE)) > 0 ||
+                        bigVal.compareTo(java.math.BigInteger.valueOf(Integer.MIN_VALUE)) < 0) {
+                    System.out.println("Ошибка. Число выходит за пределы допустимого диапазона.");
+
+
+//                long val = Long.parseLong(s.trim());
+//                if (val > Integer.MAX_VALUE || val < Integer.MIN_VALUE) {
+//                    System.out.println("Ошибка. Число выходит за пределы допустимого диапазона.");
+                    continue;
+                }
+                return bigVal.intValue();
+//                return (int) val;
+
+//                return Integer.parseInt(s.trim());
             } catch (NumberFormatException e) {
-                System.out.println("Ошибка: введите целое число.");
+                System.out.println("Ошибка: введите корректное целое число.");
             }
         }
     }
