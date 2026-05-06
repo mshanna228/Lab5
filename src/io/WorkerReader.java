@@ -46,7 +46,7 @@ public class WorkerReader {
         Integer x;
         while (true) {
             x = readInt("Введите координату X (макс. 709):", false);
-            if (x != null && x <= 709) break; // Соответствие ТЗ: x <= 709
+            if (x != null && x <= 709) break;
             System.out.println("Ошибка: X не может быть больше 709.");
         }
 
