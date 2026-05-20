@@ -105,8 +105,8 @@ public class WorkerReader {
                 continue;
             }
             try {
-                java.math.BigInteger bigVal = new java.math.BigInteger(s.trim());
-                if (bigVal.compareTo(java.math.BigInteger.valueOf(Integer.MAX_VALUE)) > 0 ||
+                java.math.BigInteger bigVal = new java.math.BigInteger(s.trim());           //если в строке число (555...) объект создается. если "abc", то NumberFormatException -> catch -> "введите корректное целое число"
+                if (bigVal.compareTo(java.math.BigInteger.valueOf(Integer.MAX_VALUE)) > 0 ||  //если это число, оно сравнивается с Integer.MAX_VALUE (2147483647) и Integer.MIN_VALUE (-2147483648).
                         bigVal.compareTo(java.math.BigInteger.valueOf(Integer.MIN_VALUE)) < 0) {
                     System.out.println("Ошибка. Число выходит за пределы допустимого диапазона.");
 
@@ -114,9 +114,9 @@ public class WorkerReader {
 //                long val = Long.parseLong(s.trim());
 //                if (val > Integer.MAX_VALUE || val < Integer.MIN_VALUE) {
 //                    System.out.println("Ошибка. Число выходит за пределы допустимого диапазона.");
-                    continue;
+                    continue; // -> while
                 }
-                return bigVal.intValue();
+                return bigVal.intValue(); //проверка пройдена -> int
 //                return (int) val;
 
 //                return Integer.parseInt(s.trim());
