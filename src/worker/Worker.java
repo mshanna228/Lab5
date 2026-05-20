@@ -1,6 +1,5 @@
 package worker;
 import java.util.Date;
-
 import managers.IdManager;
 
 public class Worker implements Comparable<Worker> {
