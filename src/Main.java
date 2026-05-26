@@ -3,6 +3,7 @@ import io.*;
 import worker.*;
 
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -14,6 +15,7 @@ public class Main {
             System.err.println("Ошибка: имя файла должно передаваться как аргумент командной строки.");
             System.exit(1);
         }
+        HashMap
 
         String fileName = args[0];
         FileManager fileManager = new FileManager(fileName); //2
